@@ -1,7 +1,7 @@
 # 基于 uni-app 的一个简洁的社交聊天 APP
 
 - UI 框架使用 uview
-- 配套后端代码[young-chat-server](../young-chat-server/README.md)
+- 配套后端代码[young-chat-server](https://gitee.com/BluseYoung-web/young-chat-server)
 
 ## 进度
 
