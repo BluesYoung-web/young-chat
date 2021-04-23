@@ -1,0 +1,70 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		{
+			"path": "pages/message/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/address/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/find/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/my/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/login/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#FFFFFF", //初始字体颜色
+		"selectedColor": "#F9AA33", //选择后字体颜色
+		"backgroundColor": "#344955", //tabBar背景颜色
+		"list": [
+			{
+				"pagePath": "pages/message/index",
+				"iconPath": "static/img/tabBar/message.png",
+				"selectedIconPath": "static/img/tabBar/message_active.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/address/index",
+				"iconPath": "static/img/tabBar/address.png",
+				"selectedIconPath": "static/img/tabBar/address_active.png",
+				"text": "通讯录"
+			},
+			{
+				"pagePath": "pages/find/index",
+				"iconPath": "static/img/tabBar/finds.png",
+				"selectedIconPath": "static/img/tabBar/finds_active.png",
+				"text": "发现"
+			},
+			{
+				"pagePath": "pages/my/index",
+				"iconPath": "static/img/tabBar/my.png",
+				"selectedIconPath": "static/img/tabBar/my_active.png",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#282828",
+		"backgroundColor": "#282828"
+	}
+}
