@@ -19,12 +19,20 @@ const onClose = () => {
 	if (socket.doClose) {
 		console.log('主动断开');
 	} else{
-		event.emit(structor.socket_close_error, '连接已断开');
+		event.emit(structor.socket_close_error, {
+			cbk: structor.socket_close_error,
+			data: '连接已断开',
+			extra: null
+		});
 	}
 };
 const onDisconnect = () => {
 	console.log('连无法连接到网络，请检查网络连接后重试');
-	event.on(structor.socket_reconnect_fail, '超过最大重连次数');
+	event.emit(structor.socket_reconnect_fail, {
+		cbk: structor.socket_reconnect_fail,
+		data: '超过最大重连次数',
+		extra: null
+	});
 };
 const onMessage = ({ data = {}, cbk = null, extra = null }) => {
 	if (cbk) {
@@ -33,7 +41,7 @@ const onMessage = ({ data = {}, cbk = null, extra = null }) => {
 		event.broadcast({ data, extra, cbk });
 	}
 };
-
+const onError = () => console.log('连接出错');
 const init = (sign, uid) => {
 	const url = `${base_ws}?sign=${sign}&uid=${uid}`;
 	socket = new Socket({
@@ -41,6 +49,7 @@ const init = (sign, uid) => {
 		onOpen,
 		onClose,
 		onMessage,
+		onError,
 		onDisconnect
 	});
 	socket.init();
