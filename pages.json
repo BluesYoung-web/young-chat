@@ -6,7 +6,8 @@
 		{
 			"path": "pages/message/index",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/address/index",
@@ -25,6 +26,11 @@
 			}
 		}, {
 			"path": "pages/login/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/message/subPage/chatRoom",
 			"style": {
 				"navigationStyle": "custom"
 			}

@@ -16,6 +16,7 @@ event.on(structor.sign_no_use, ({ cbk, data, extra }) => {
 			title: data,
 			icon: 'none'
 		});
+		net.close();
 		setTimeout(() => {
 			uni.reLaunch({
 				url: '/pages/login/index'

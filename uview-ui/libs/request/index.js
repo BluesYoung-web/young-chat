@@ -92,11 +92,11 @@ class Request {
 			}
 			uni.request(options);
 		})
-		// .catch(res => {
-		// 	// 如果返回reject()，不让其进入this.$u.post().then().catch()后面的catct()
-		// 	// 因为很多人都会忘了写后面的catch()，导致报错捕获不到catch
-		// 	return new Promise(()=>{});
-		// })
+		.catch(res => {
+			// 如果返回reject()，不让其进入this.$u.post().then().catch()后面的catct()
+			// 因为很多人都会忘了写后面的catch()，导致报错捕获不到catch
+			return new Promise(()=>{});
+		})
 	}
 
 	constructor() {
