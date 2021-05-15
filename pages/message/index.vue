@@ -1,45 +1,70 @@
 <template>
-	<view class="content">
-		<h1>消息</h1>
+	<view>
+		<view class="content">
+			<u-navbar
+				title="消息"
+				:background="background"
+				:title-color="title_color"
+				back-icon-name=""
+				:custom-back="() => null"
+			>
+				<div slot="right">
+					<u-icon name="list" :color="title_color" size="36" style="margin-right: 10px;" @click="showMenu=true" />
+				</div>
+			</u-navbar>
+			<u-action-sheet v-model="showMenu" :list="menus" @click="clickMenu" />
+			<scroll-view scroll-y="true" class="list">
+				<msg-list
+					v-if="chatRooms.length > 0"
+					:chat-rooms="chatRooms"
+					@open-change="openChange"
+					@click-menu="listOperate"
+					@click-into="clickInto"
+				/>
+				<u-empty v-else mode="history" />
+			</scroll-view>
+		</view>
+		<u-no-network />
 	</view>
 </template>
 
 <script>
-	import color from '@/uni.scss';
-	import { getLoginInfo } from '@/store/login.js';
-	export default {
-		data() {
-			return {
-				background: { backgroundColor: color.young_bg },
-				title_color: color.young_title
-			}
-		},
-		async onLoad() {
-			const info = await getLoginInfo().catch(() => {
-				this.$u.toast('请先去登录');
-				setTimeout(() => {
-					this.$u.route({
-						url: '/pages/login/index',
-						type: 'reLaunch'
-					});
-				}, 800);
-			});
-			if (!!info) {
-				const { uid, token } = info;
-			}
-		},
-		methods: {
-
+import MsgList from '@/components/msg-list/index.vue';
+import useBase from './mixins/useBase.js';
+import useList from './mixins/useList.js';
+export default {
+	name: 'Message',
+	components: { MsgList },
+	mixins: [useBase, useList],
+	data() {
+		return {
+			
 		}
+	},
+	onPullDownRefresh() {
+		console.log('下拉了');
+		setTimeout(() => {
+			uni.stopPullDownRefresh();
+		}, 3000);
+	},
+	onTabItemTap() {
+		uni.startPullDownRefresh();
+	},
+	methods: {
+		
 	}
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+	.list {
+		margin-top: 40upx 0;
+		height: calc(100vh - 80upx);
+	}
 	.content {
-		background-color: $young-bg;
+		background-color: $uni-bg-color;
 		width: 100vw;
 		height: 100vh;
-		color: white;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

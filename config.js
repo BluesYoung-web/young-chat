@@ -12,8 +12,8 @@ const structor = {
 	
 	get_this_user_info: '200-0-0'
 };
-const base_http = 'http://localhost:1443';
-const base_ws = 'ws://localhost:9527';
+const base_http = 'http://192.168.20.201:1443';
+const base_ws = 'ws://192.168.20.201:9527';
 export {
 	base_http,
 	base_ws,

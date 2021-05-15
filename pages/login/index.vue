@@ -18,7 +18,7 @@
 			</u-form>
 		</div>
 		<div class="button">
-			<u-button @click="login">登录</u-button>
+			<u-button @click="login">登 录</u-button>
 		</div>
 	</view>
 </template>
@@ -96,7 +96,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.content {
 		background-image: url(@/static/img/login/bg.jpg);
 		width: 100vw;
