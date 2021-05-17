@@ -53,6 +53,6 @@ event.on(structor.socket_close_error, ({ cbk, data, extra }) => {
 	}
 });
 export default async () => {
-  const { sign, uid } = await getLoginInfo();
+  const { sign, uid } = await getLoginInfo() || {};
   net.init(sign, uid);
 };

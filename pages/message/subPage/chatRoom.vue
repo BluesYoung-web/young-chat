@@ -24,8 +24,8 @@
 				@send="sendText"
 				@plus="showPlusBoard"
 			/>
-			<emoji :show-emoji="showEmoji" />
-			<ext-menu :show-plus="showPlus" :plus-menu="plusMenu" />
+			<emoji :show-emoji="showEmoji" @add-emoji="addEmoji" @delete="deleteMsg" />
+			<ext-menu :show-plus="showPlus" :plus-menu="plusMenu" @click-item="clickItem" />
 		</div>
 	</view>
 </template>

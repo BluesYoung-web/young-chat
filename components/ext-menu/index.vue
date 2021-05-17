@@ -3,7 +3,7 @@
 		<!-- 扩展面板 -->
 		<view class="picBox" v-show="showPlus">
 			<view class="menu" v-for="(item, index) in plusMenu" :key="index">
-				<view @click="$emit('clickItem', item)" class="border">
+				<view @click="$emit('click-item', item)" class="border">
 					<image class="menu-item" :src="item.src" />
 				</view>
 			</view>

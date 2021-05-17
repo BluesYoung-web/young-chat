@@ -26,7 +26,7 @@
 								v-for="(tp,id) in item.emojiList"
 								:key="id"
 								class="face"
-								@tap="$emit('showFaces', tp)"
+								@tap="$emit('add-emoji', tp)"
 							>
 								{{ tp }}
 							</view>

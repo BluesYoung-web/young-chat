@@ -63,5 +63,6 @@ export default {
 	init,
 	sendMsg,
 	close: () => socket.close(),
-	auto_reconnect: () => socket.reConnect()
+	auto_reconnect: () => socket.reConnect(),
+	upload: (args) => socket.upload(args)
 };
