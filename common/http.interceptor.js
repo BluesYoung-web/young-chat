@@ -30,6 +30,7 @@ const install = (Vue, vm) => {
 			return data;
 		} else{
 			vm.$u.toast(data);
+			throw new Error(data);
 		}
   }
 	

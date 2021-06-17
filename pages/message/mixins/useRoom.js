@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyang
  * @Date: 2021-05-15 15:34:21
- * @LastEditTime: 2021-05-17 17:46:48
+ * @LastEditTime: 2021-05-18 11:48:25
  * @Description: 
  */
 import net from '@/core/net.js';
@@ -123,6 +123,7 @@ export default {
 		},
 		sendText() {
 			console.log('发送文本');
+			console.log(this.inputMsg);
 		},
 		sendImg() {
 			console.log('发送图片');

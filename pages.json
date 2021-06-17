@@ -39,7 +39,7 @@
 	"tabBar": {
 		"color": "#FFFFFF", //初始字体颜色
 		"selectedColor": "#F9AA33", //选择后字体颜色
-		"backgroundColor": "#344955", //tabBar背景颜色
+		"backgroundColor": "#764ba2", //tabBar背景颜色
 		"list": [
 			{
 				"pagePath": "pages/message/index",

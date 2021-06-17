@@ -16,12 +16,14 @@
 @import 'uview-ui/theme.scss';
 
 /* 颜色变量 */
-$young-bg: #344955;
+$young-bg:  #667eea;
+$young-bg-bot:  #764ba2;
 $young-title: #fff;
 $young-wx-green: #1BB723;
 
 :export {
 	young_bg: $young-bg;
+	young_bg_bot: $young-bg-bot;
 	young_title: $young-title;
 	young_wx_green: $young-wx-green
 }

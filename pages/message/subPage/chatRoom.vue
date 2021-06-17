@@ -52,7 +52,7 @@ export default {
 .key-bord{
 	position: fixed;
 	width: 100%;
-	background-color: $young-bg;
+	background-color: $young-bg-bot;
 	padding-top: 10upx;
 	padding-bottom: 20upx;
 }

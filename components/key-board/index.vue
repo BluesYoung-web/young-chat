@@ -174,7 +174,7 @@ export default {
 	}
 	.keyboardInput{
 		background-color: #FFFFFF;
-		border: 1upx solid #344955;
+		border: 1upx solid $young-bg-bot;
 		width: 400upx;
 		border-radius: 15upx;
 		display: flex;
@@ -204,7 +204,7 @@ export default {
 		margin-left: 20upx;
 		height: 70upx;
 		width: 70upx;
-		border: 1upx solid #344955;
+		border: 1upx solid $young-bg-bot;
 		border-radius: 50%;
 		background-color: #F9AA33;
 		display: flex;
