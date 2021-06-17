@@ -18,9 +18,19 @@ const getUserInfo = async (uid) => {
 	return await state.get(`user_info_${uid}`);
 };
 
+/**
+ * 获取当前用户的信息
+ */
+const getCurrentUserInfo = async () => {
+	const { uid } = await getLoginInfo();
+	const info = await getUserInfo(uid);
+	return info || {};
+};
+
 export {
 	setLoginInfo,
 	getLoginInfo,
 	setUserInfo,
-	getUserInfo
+	getUserInfo,
+	getCurrentUserInfo
 }

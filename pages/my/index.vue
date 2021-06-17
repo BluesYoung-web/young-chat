@@ -13,11 +13,11 @@
 			</div>
 		</u-navbar>
 		<div class="user-card py-32 w-full flex items-center justify-center">
-			<u-image class="shadow-xl" shape="circle" :src="user_info.avatar" width="420" height="420" />
+			<u-image class="shadow-xl" shape="circle" :src="user_info.avatar || '/static/img/my/avatar.jpg'" width="420" height="420" />
 		</div>
 		<div class="info text-white text-center">
 			<div class="nick text-xl">
-				{{ user_info.nick }}
+				{{ user_info.nick || '用户' + user_info.uid }}
 			</div>
 			<div class="uid">
 				账号：{{ user_info.uid }}
@@ -32,15 +32,15 @@
 		<div class="w-full h-full px-20 flex justify-between text-white">
 			<p class="flex flex-col text-center">
 				<span>发表</span>
-				<span>{{ user_info.send }}</span>
+				<span>{{ user_info.send || 0 }}</span>
 			</p>
 			<p class="flex flex-col text-center">
 				<span>点赞</span>
-				<span>{{ user_info.like }}</span>
+				<span>{{ user_info.like || 0 }}</span>
 			</p>
 			<p class="flex flex-col text-center">
 				<span>评论</span>
-				<span>{{ user_info.comment }}</span>
+				<span>{{ user_info.comment || 0 }}</span>
 			</p>
 		</div>
 	</view>
@@ -48,24 +48,25 @@
 
 <script>
 import color from '@/uni.scss';
+import { getCurrentUserInfo } from '@/store/login.js';
 export default {
 	data() {
 		return {
 			background: { backgroundColor: color.young_bg },
 			title_color: color.young_title,
 			user_info: {
-				avatar: '/static/img/my/avatar.jpg',
-				nick: '我是昵称',
-				uid: '754433271',
-				motto: '米龙传说-刀截剑-金色天际线',
-				send: 123,
-				like: 456,
-				comment: 789
+				avatar: '',
+				nick: '',
+				uid: '',
+				motto: '',
+				send: 0,
+				like: 0,
+				comment: 0
 			}
 		}
 	},
-	onLoad() {
-
+	async onLoad() {
+		this.user_info = await getCurrentUserInfo();
 	},
 	methods: {
 		goSetting() {

@@ -30,7 +30,6 @@ event.on(structor.sign_no_use, ({ cbk, data, extra }) => {
 event.on(structor.get_this_user_info, async ({ cbk, data, extra }) => {
 	if (cbk === structor.get_this_user_info) {
 		await setUserInfo(data);
-		console.log(await getUserInfo(data.uid));
 	}
 });
 /**
