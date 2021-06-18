@@ -10,7 +10,9 @@ const structor = {
 	socket_close_error: '100-4001-0',
 	socket_reconnect_fail: '100-4002-0',
 	
-	get_this_user_info: '200-0-0'
+	get_this_user_info: '200-0-0',
+	
+	server_error: '500-0-0'
 };
 const base_http = 'http://192.168.20.201:1443';
 const base_ws = 'ws://192.168.20.201:9527';

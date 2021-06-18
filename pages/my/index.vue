@@ -49,6 +49,7 @@
 <script>
 import color from '@/uni.scss';
 import { getCurrentUserInfo } from '@/store/login.js';
+import { editInfo } from '@/api/user.js';
 export default {
 	data() {
 		return {
@@ -74,6 +75,12 @@ export default {
 		},
 		edit() {
 			console.log('编辑个人信息');
+			editInfo({ 
+				avatar: '3rugfkjdasjahdksfjhalsd',
+				nick: 'fdsafasdfa',
+				motto: 'fsdfadsfase232423423',
+				tel: 32243423432423
+			})
 		}
 	}
 }
