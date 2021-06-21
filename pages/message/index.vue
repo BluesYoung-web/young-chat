@@ -30,7 +30,7 @@
 
 <script>
 import MsgList from '@/components/msg-list/index.vue';
-import useBase from './mixins/useBase.js';
+import useBase from '@/mixins/useBase.js';
 import useList from './mixins/useList.js';
 export default {
 	name: 'Message',

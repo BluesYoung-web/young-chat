@@ -7,7 +7,6 @@
 			back-icon-name="arrow-left"
 			:back-icon-color="title_color"
 			:back-icon-size="34"
-			:custom-back="goBack"
 		>
 			<div slot="right">
 				<u-icon name="more-dot-fill" :color="title_color" size="36" style="margin-right: 10px;" @click="showMenu=true" />
@@ -31,7 +30,7 @@
 </template>
 
 <script>
-import useBase from '../mixins/useBase.js';
+import useBase from '@/mixins/useBase.js';
 import useRoom from '../mixins/useRoom.js';
 import KeyBoard from '@/components/key-board/index.vue';
 import Emoji from '@/components/emoji/index.vue';

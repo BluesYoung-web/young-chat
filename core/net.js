@@ -19,19 +19,19 @@ const onClose = () => {
 	if (socket.doClose) {
 		console.log('主动断开');
 	} else{
-		event.emit(structor.socket_close_error, {
-			cbk: structor.socket_close_error,
+		event.emit(structor.fail, {
+			cbk: structor.fail,
 			data: '连接已断开',
-			extra: null
+			extra: structor.socket_close_error
 		});
 	}
 };
 const onDisconnect = () => {
 	console.log('连无法连接到网络，请检查网络连接后重试');
-	event.emit(structor.socket_reconnect_fail, {
-		cbk: structor.socket_reconnect_fail,
+	event.emit(structor.fail, {
+		cbk: structor.fail,
 		data: '超过最大重连次数',
-		extra: null
+		extra: structor.socket_reconnect_fail
 	});
 };
 const onMessage = ({ data = {}, cbk = null, extra = null }) => {

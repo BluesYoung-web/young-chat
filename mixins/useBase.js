@@ -1,5 +1,6 @@
 import color from '@/uni.scss';
 import { getLoginInfo } from '@/store/login.js';
+import { getCurrentUserInfo } from '@/store/login.js';
 export default {
 	data() {
 		return {
@@ -26,6 +27,9 @@ export default {
 		if (!!info) {
 			const { uid, token } = info;
 		}
+	},
+	async onShow() {
+		this.user_info = await getCurrentUserInfo();
 	},
 	methods: {
 		clickMenu(index) {

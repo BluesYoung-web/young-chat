@@ -48,9 +48,11 @@
 
 <script>
 import color from '@/uni.scss';
-import { getCurrentUserInfo } from '@/store/login.js';
 import { editInfo } from '@/api/user.js';
+import useBase from '@/mixins/useBase.js';
 export default {
+	name: 'My',
+	mixins: [useBase],
 	data() {
 		return {
 			background: { backgroundColor: color.young_bg },
@@ -66,21 +68,16 @@ export default {
 			}
 		}
 	},
-	async onLoad() {
-		this.user_info = await getCurrentUserInfo();
-	},
 	methods: {
 		goSetting() {
-			console.log('设置');
+			uni.navigateTo({
+				url: './subPage/setting'
+			});
 		},
 		edit() {
-			console.log('编辑个人信息');
-			editInfo({ 
-				avatar: '3rugfkjdasjahdksfjhalsd',
-				nick: 'fdsafasdfa',
-				motto: 'fsdfadsfase232423423',
-				tel: 32243423432423
-			})
+			uni.navigateTo({
+				url: './subPage/edit'
+			});
 		}
 	}
 }
@@ -88,12 +85,6 @@ export default {
 
 <style scoped lang="scss">
 	.content {
-		width: 100%;
-		height: calc(100vh - 80upx);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
 		background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 	}
 </style>
