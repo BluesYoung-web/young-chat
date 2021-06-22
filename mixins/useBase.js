@@ -1,6 +1,7 @@
 import color from '@/uni.scss';
 import { getLoginInfo } from '@/store/login.js';
 import { getCurrentUserInfo } from '@/store/login.js';
+import { sleep } from '@/util/sleep.js';
 export default {
 	data() {
 		return {
@@ -15,14 +16,13 @@ export default {
 		}
 	},
 	async onLoad() {
-		const info = await getLoginInfo().catch(() => {
+		const info = await getLoginInfo().catch(async () => {
 			this.$u.toast('请先去登录');
-			setTimeout(() => {
-				this.$u.route({
-					url: '/pages/login/index',
-					type: 'reLaunch'
-				});
-			}, 800);
+			await sleep(0.8)
+			this.$u.route({
+				url: '/pages/login/index',
+				type: 'reLaunch'
+			});
 		});
 		if (!!info) {
 			const { uid, token } = info;

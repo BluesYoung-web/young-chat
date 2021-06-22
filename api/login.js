@@ -12,7 +12,8 @@ import net from '@/core/net.js';
 const getCaptcha = async function() {
 	const res = await this.$u.get('/login/getCaptcha');
 	return res;
-}
+};
+
 const login = async function(params) {
 	const res = await this.$u.post('/login', params);
 	const { uid, token } = res;
@@ -21,9 +22,15 @@ const login = async function(params) {
 	await setLoginInfo(res);
 	net.init(sign, uid);
 	return res;
-}
+};
+
+const loginOut = async function() {
+	await setLoginInfo(null);
+	await net.close();
+};
 
 export default {
 	login,
-	getCaptcha
+	getCaptcha,
+	loginOut
 }

@@ -32,6 +32,7 @@
 import MsgList from '@/components/msg-list/index.vue';
 import useBase from '@/mixins/useBase.js';
 import useList from './mixins/useList.js';
+import { sleep } from '@/util/sleep.js';
 export default {
 	name: 'Message',
 	components: { MsgList },
@@ -41,11 +42,10 @@ export default {
 			
 		}
 	},
-	onPullDownRefresh() {
+	async onPullDownRefresh() {
 		console.log('下拉了');
-		setTimeout(() => {
-			uni.stopPullDownRefresh();
-		}, 3000);
+		await sleep(3);
+		uni.stopPullDownRefresh();
 	},
 	onTabItemTap() {
 		uni.startPullDownRefresh();

@@ -7,6 +7,7 @@
 import { getLoginInfo, setUserInfo, getUserInfo } from '@/store/login.js';
 import net, { event } from '@/core/net.js';
 import { structor } from '@/config.js';
+import { sleep } from '@/util/sleep.js';
 /**
  * socket 消息处理成功
  */
@@ -50,7 +51,7 @@ event.on(structor.fail, async ({ cbk, data, extra }) => {
 	/**
 	 * 常规操作失败
 	 */
-	uni.showToast({
+	data.msg && uni.showToast({
 		icon: 'none',
 		title: data.msg
 	});
@@ -58,12 +59,12 @@ event.on(structor.fail, async ({ cbk, data, extra }) => {
 	 * 签名无效 | 异地登录
 	 */
 	if (extra === structor.sign_no_use || extra === structor.login_on_another) {
+	  await sleep(0.5);
 		net.close();
-		setTimeout(() => {
-			uni.reLaunch({
-				url: '/pages/login/index'
-			});
-		}, 800);
+		await sleep(0.8);
+		uni.reLaunch({
+			url: '/pages/login/index'
+		});
 	}
 	/**
 	 * websocket 意外断开

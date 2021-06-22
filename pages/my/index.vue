@@ -13,7 +13,7 @@
 			</div>
 		</u-navbar>
 		<div class="user-card py-32 w-full flex items-center justify-center">
-			<u-image class="shadow-xl" shape="circle" :src="user_info.avatar || '/static/img/my/avatar.jpg'" width="420" height="420" />
+			<u-image class="shadow-xl" shape="circle" :src="user_info.avatar.indexOf('/static') === 0 ? user_info.avatar : `${base_http}${user_info.avatar}`" width="420" height="420" />
 		</div>
 		<div class="info text-white text-center">
 			<div class="nick text-xl">
@@ -50,11 +50,13 @@
 import color from '@/uni.scss';
 import { editInfo } from '@/api/user.js';
 import useBase from '@/mixins/useBase.js';
+import { base_http } from '@/config.js';
 export default {
 	name: 'My',
 	mixins: [useBase],
 	data() {
 		return {
+			base_http,
 			background: { backgroundColor: color.young_bg },
 			title_color: color.young_title,
 			user_info: {

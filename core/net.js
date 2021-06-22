@@ -21,7 +21,7 @@ const onClose = () => {
 	} else{
 		event.emit(structor.fail, {
 			cbk: structor.fail,
-			data: '连接已断开',
+			data: { msg: '' },
 			extra: structor.socket_close_error
 		});
 	}
@@ -30,7 +30,7 @@ const onDisconnect = () => {
 	console.log('连无法连接到网络，请检查网络连接后重试');
 	event.emit(structor.fail, {
 		cbk: structor.fail,
-		data: '超过最大重连次数',
+		data: { msg: '超过最大重连次数' },
 		extra: structor.socket_reconnect_fail
 	});
 };

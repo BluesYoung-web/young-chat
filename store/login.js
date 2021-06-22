@@ -22,7 +22,7 @@ const getUserInfo = async (uid) => {
  * 获取当前用户的信息
  */
 const getCurrentUserInfo = async () => {
-	const { uid } = await getLoginInfo();
+	const { uid } = await getLoginInfo() || {};
 	const info = await getUserInfo(uid);
 	return info || {};
 };
