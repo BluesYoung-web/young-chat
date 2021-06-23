@@ -15,6 +15,8 @@ const structor = {
 	
 	get_this_user_info: '200-0-0',
 	set_this_user_info: '200-0-1',
+	search_user: '200-0-2',
+	get_friend_list: '200-0-3',
 	
 	server_error: '500-0-0',
 	
