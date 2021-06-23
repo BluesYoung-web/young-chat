@@ -2,7 +2,7 @@
 	<view class="content">
 		<u-navbar
 			title="聊天室"
-			:background="background"
+			:background="background_conf"
 			:title-color="title_color"
 			back-icon-name="arrow-left"
 			:back-icon-color="title_color"
@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import useBase from '@/mixins/useBase.js';
 import useRoom from '../mixins/useRoom.js';
 import KeyBoard from '@/components/key-board/index.vue';
 import Emoji from '@/components/emoji/index.vue';
@@ -38,7 +37,7 @@ import ExtMenu from '@/components/ext-menu/index.vue';
 export default {
 	name: 'ChatRoom',
 	components: { KeyBoard, Emoji, ExtMenu },
-	mixins: [useBase, useRoom],
+	mixins: [useRoom],
 	data() {
 		return {
 			

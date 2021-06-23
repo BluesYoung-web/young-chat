@@ -1,6 +1,6 @@
 import { editInfo } from '@/api/user.js';
 import { uploadImg } from '@/api/upload.js';
-import net, { event } from '@/core/net.js';
+import { event } from '@/core/net.js';
 import { structor, base_http } from '@/config.js';
 import { sleep } from '@/util/sleep.js';
 export default {

@@ -3,7 +3,7 @@
 		<view class="content">
 			<u-navbar
 				title="消息"
-				:background="background"
+				:background="background_conf"
 				:title-color="title_color"
 				back-icon-name=""
 				:custom-back="() => null"
@@ -30,13 +30,12 @@
 
 <script>
 import MsgList from '@/components/msg-list/index.vue';
-import useBase from '@/mixins/useBase.js';
 import useList from './mixins/useList.js';
 import { sleep } from '@/util/sleep.js';
 export default {
 	name: 'Message',
 	components: { MsgList },
-	mixins: [useBase, useList],
+	mixins: [useList],
 	data() {
 		return {
 			

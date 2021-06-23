@@ -8,7 +8,7 @@
 	<view class="content">
 		<u-navbar
 			title="编辑资料"
-			:background="background"
+			:background="background_conf"
 			:title-color="title_color"
 			back-icon-name="arrow-left"
 			:back-icon-color="title_color"
@@ -17,7 +17,7 @@
 		<div class="main w-full h-full">
 			<u-cell-group>
 				<u-cell-item icon="none" title="用户头像" @click="chooseImg">
-					<u-image slot="right-icon" :src="user_info.avatar.indexOf('/static') === 0 ? user_info.avatar : `${base_http}${user_info.avatar}`" shape="circle" width="100" height="100" />
+					<u-image slot="right-icon" :src="getImgUrl(user_info.avatar)" shape="circle" width="100" height="100" />
 				</u-cell-item>
 				<u-cell-item icon="none" title="昵称" @click="edit_nick = true">
 					<span slot="right-icon">{{ user_info.nick }}</span>
@@ -65,12 +65,11 @@
 </template>
 
 <script>
-import useBase from '@/mixins/useBase.js';
 import useEdit from '../mixins/useEidt.js';
 import Clip from '@/uni_modules/lime-clipper/components/lime-clipper/';
 export default {
 	name: 'Edit',
-	mixins: [useBase, useEdit],
+	mixins: [useEdit],
 	components: { Clip },
 	data() {
 		return {

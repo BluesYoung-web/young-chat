@@ -44,7 +44,12 @@ event.on(structor.fail, async ({ cbk, data, extra }) => {
 	if (extra === structor.socket_reconnect_fail) {
 		uni.showModal({
 			showCancel: false,
-			title: '您当前的网络可能存在问题，请确保网络正常再使用'
+			title: '您当前的网络可能存在问题，请确保网络正常再使用',
+			success: () => {
+				uni.reLaunch({
+					url: '/pages/login/index'
+				});
+			}
 		});
 		return;
 	}

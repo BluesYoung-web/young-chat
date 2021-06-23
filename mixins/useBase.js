@@ -2,17 +2,12 @@ import color from '@/uni.scss';
 import { getLoginInfo } from '@/store/login.js';
 import { getCurrentUserInfo } from '@/store/login.js';
 import { sleep } from '@/util/sleep.js';
+import { base_http } from '@/config.js';
 export default {
 	data() {
 		return {
-			background: { backgroundColor: color.young_bg },
-			title_color: color.young_title,
-			menus: [
-				{ text: '发起群聊' },
-				{ text: '添加朋友' },
-				{ text: '帮助与反馈' }
-			],
-			showMenu: false,
+			background_conf: { backgroundColor: color.young_bg },
+			title_color: color.young_title
 		}
 	},
 	async onLoad() {
@@ -32,18 +27,11 @@ export default {
 		this.user_info = await getCurrentUserInfo();
 	},
 	methods: {
-		clickMenu(index) {
-			switch (index){
-				case 0:
-					this.$u.toast('发起群聊');
-					break;
-				case 1:
-					this.$u.toast('添加朋友');
-					break;
-				default:
-					this.$u.toast(`请发送邮件至:\n bluesyoung-web@163.com`);
-					break;
+		getImgUrl(src) {
+			if (src) {
+				return src.indexOf('/static') === 0 ? src : `${base_http}${src}`;
 			}
-		},
+			return '/static/img/my/avatar.jpg'
+		}
 	}
 }

@@ -8,7 +8,7 @@
 	<view class="content">
 		<u-navbar
 			title="设置"
-			:background="background"
+			:background="background_conf"
 			:title-color="title_color"
 			back-icon-name="arrow-left"
 			:back-icon-color="title_color"
@@ -33,10 +33,9 @@
 </template>
 
 <script>
-import useBase from '@/mixins/useBase.js';
 import useSetting from '../mixins/useSetting.js';
 export default {
-	mixins: [useBase, useSetting],
+	mixins: [useSetting],
 	data() {
 		return {
 			customStyle: {

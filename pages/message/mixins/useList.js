@@ -1,6 +1,12 @@
 export default {
 	data() {
 		return {
+			menus: [
+				{ text: '发起群聊' },
+				{ text: '添加朋友' },
+				{ text: '帮助与反馈' }
+			],
+			showMenu: false,
 			chatRooms: [
 				{
 					img: '/static/img/tips/出价成功图标.png',
@@ -76,6 +82,21 @@ export default {
 		}
 	},
 	methods: {
+		clickMenu(index) {
+			switch (index){
+				case 0:
+					this.$u.toast('发起群聊');
+					break;
+				case 1:
+					uni.navigateTo({
+						url: '/pages/address/subPage/search'
+					});
+					break;
+				default:
+					this.$u.toast(`请发送邮件至:\n bluesyoung-web@163.com`);
+					break;
+			}
+		},
 		openChange(index) {
 			this.chatRooms.forEach((item) => item.show = false);
 			this.chatRooms[index].show = true;

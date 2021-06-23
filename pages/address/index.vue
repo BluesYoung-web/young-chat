@@ -1,25 +1,26 @@
 <template>
 	<view class="content">
 		<h1>联系人</h1>
+		<u-button @click="getFriendsList">获取好友列表</u-button>
 	</view>
 </template>
 
 <script>
-	import color from '@/uni.scss';
-	export default {
-		data() {
-			return {
-				background: { backgroundColor: color.young_bg },
-				title_color: color.young_title
-			}
-		},
-		onLoad() {
+import { getFriendsList } from '@/api/user.js';
+export default {
+	data() {
+		return {
+		}
+	},
+	onLoad() {
 
-		},
-		methods: {
-
+	},
+	methods: {
+		async getFriendsList() {
+			await getFriendsList();
 		}
 	}
+}
 </script>
 
 <style lang="scss">
