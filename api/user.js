@@ -4,13 +4,22 @@
  * @LastEditTime: 2021-06-18 15:51:51
  * @Description: 当前用户相关的操作
  */
-import net from '@/core/net.js';
 import { structor } from '@/config.js';
+import baseSend from './_base.js';
 const editInfo = async (params) => {
-	const [com, task, id] = structor.set_this_user_info.split('-').map((item) => +item);
-  await net.sendMsg({ cbk: structor.get_this_user_info, data: { com, task, id, params } });
+	await baseSend(structor.set_this_user_info, params);
+};
+
+const search = async (params) => {
+	await baseSend(structor.search_user, params);
+};
+
+const getFriendsList = async (params) => {
+	await baseSend(structor.get_friend_list, params);
 };
 
 export {
-	editInfo
+	editInfo,
+	search,
+	getFriendsList
 };
