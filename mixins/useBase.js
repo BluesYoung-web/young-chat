@@ -7,7 +7,8 @@ export default {
 	data() {
 		return {
 			background_conf: { backgroundColor: color.young_bg },
-			title_color: color.young_title
+			title_color: color.young_title,
+			wx_green: color.young_wx_green
 		}
 	},
 	async onLoad() {
