@@ -30,9 +30,9 @@ export default {
 	methods: {
 		getImgUrl(src) {
 			if (src) {
-				return src.indexOf('/static') === 0 ? src : `${base_http}${src}`;
+				return (src.indexOf('/static') === 0 || src.indexOf('blob') === 0) ? src : `${base_http}${src}`;
 			}
-			return '/static/img/my/avatar.jpg'
+			return '/static/img/my/avatar.jpg';
 		}
 	}
 }

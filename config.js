@@ -18,6 +18,8 @@ const structor = {
 	search_user: '200-0-2',
 	get_friend_list: '200-0-3',
 	
+	send_circle: '300-0-0',
+	
 	server_error: '500-0-0',
 	
 	upload_img: '999-1',

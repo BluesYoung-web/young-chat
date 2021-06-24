@@ -6,7 +6,9 @@ export default {
 	},
 	methods: {
 		goCircle() {
-			this.$u.toast('进入动态');
+			uni.navigateTo({
+				url: '/pages/find/subPage/circle'
+			});
 		},
 		goBBBUG() {
 			this.$u.toast('敬请期待')
