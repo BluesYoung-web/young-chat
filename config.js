@@ -19,6 +19,11 @@ const structor = {
 	get_friend_list: '200-0-3',
 	
 	send_circle: '300-0-0',
+	get_circle: '300-0-1',
+	del_circle: '300-0-2',
+	click_like: '300-0-3',
+	
+	has_new_circle: '300-1-0',
 	
 	server_error: '500-0-0',
 	

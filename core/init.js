@@ -5,6 +5,7 @@
  * @Description: 系统初始化
  */
 import { getLoginInfo, setUserInfo, getUserInfo } from '@/store/login.js';
+import { setCircleStatus } from '@/store/status.js';
 import net, { event } from '@/core/net.js';
 import { structor } from '@/config.js';
 import { sleep } from '@/util/sleep.js';
@@ -20,9 +21,19 @@ event.on(structor.success, async ({ cbk, data, extra }) => {
 		return;
 	}
 	/**
+	 * 有新的动态
+	 */
+	if (extra === structor.has_new_circle) {
+		uni.showTabBarRedDot({
+			index: 2
+		});
+		await setCircleStatus({ flag: true });
+		return;
+	}
+	/**
 	 * 常规操作成功
 	 */
-	uni.showToast({
+	data.msg && uni.showToast({
 		icon: 'none',
 		title: data.msg
 	});
