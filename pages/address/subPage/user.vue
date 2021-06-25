@@ -15,7 +15,7 @@
 		</u-navbar>
 		<view class="content">
 			<div class="py-12 w-full">
-				<u-image class="shadow-xl mx-auto" shape="circle" :src="getImgUrl(temp_info.avatar)" width="420" height="420" />
+				<u-image class="shadow-xl mx-auto" shape="circle" :src="getImgUrl(temp_info.avatar)" width="420" height="420" @click="previewImg(getImgUrl(temp_info.avatar))" />
 			</div>
 			<div class="info text-white text-center">
 				<div class="nick text-xl mb-3">
