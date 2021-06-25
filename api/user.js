@@ -18,8 +18,13 @@ const getFriendsList = async (params) => {
 	await baseSend(structor.get_friend_list, params);
 };
 
+const getThisUserInfo = async (params) => {
+	await baseSend(structor.get_this_user_info);
+};
+
 export {
 	editInfo,
 	search,
-	getFriendsList
+	getFriendsList,
+	getThisUserInfo
 };
