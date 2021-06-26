@@ -22,9 +22,9 @@
 			<div class="m-3 text-center">
 				<u-button type="error" plain @click="rmAllChat">清空聊天记录</u-button>
 			</div>
-			<div class="m-3 text-center">
+			<!-- <div class="m-3 text-center">
 				<u-button type="success" plain @click="delCache">删除动态缓存</u-button>
-			</div>
+			</div> -->
 			<div class="m-3 text-center">
 				<u-button type="warning" plain @click="loginOut">退出登录</u-button>
 			</div>
