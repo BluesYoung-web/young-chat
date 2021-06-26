@@ -1,6 +1,7 @@
 import { getFriendsList } from '@/api/user.js';
 import { event } from '@/core/net.js';
 import { structor } from '@/config.js';
+import { getApplyStatus, setApplyStatus } from '@/store/status.js';
 export default {
 	data() {
 		return {
@@ -21,6 +22,11 @@ export default {
 		event.off(structor.get_friend_list, '*');
 	},
 	async onShow() {
+		uni.hideTabBarRedDot({
+			index: 1
+		});
+		const { flag } = await getApplyStatus();
+		this.hasNewApply = flag;
 		await getFriendsList();
 	},
 	methods: {
@@ -37,8 +43,12 @@ export default {
 				this.friend_list = this.friend_list_all.slice();
 			}
 		},
-		goApply() {
-			this.$u.toast('好友申请列表')
+		async goApply() {
+			this.hasNewApply = false;
+			await setApplyStatus({ flag: false });
+			uni.navigateTo({
+				url: '/pages/address/subPage/apply'
+			});
 		},
 		goRoom() {
 			this.$u.toast('群列表')

@@ -10,7 +10,17 @@ const getCircleStatus = async () => {
 	return await state.get('circle');
 };
 
+const setApplyStatus = async (flag) => {
+	return await state.set('friend_apply', flag);
+};
+
+const getApplyStatus = async () => {
+	return await state.get('friend_apply');
+};
+
 export {
 	setCircleStatus,
-	getCircleStatus
+	getCircleStatus,
+	setApplyStatus,
+	getApplyStatus
 };

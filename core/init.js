@@ -5,7 +5,7 @@
  * @Description: 系统初始化
  */
 import { getLoginInfo, setUserInfo, getUserInfo } from '@/store/login.js';
-import { setCircleStatus } from '@/store/status.js';
+import { setCircleStatus, setApplyStatus } from '@/store/status.js';
 import net, { event } from '@/core/net.js';
 import { structor } from '@/config.js';
 import { sleep } from '@/util/sleep.js';
@@ -28,6 +28,24 @@ event.on(structor.success, async ({ cbk, data, extra }) => {
 			index: 2
 		});
 		await setCircleStatus({ flag: true });
+		return;
+	}
+	/**
+	 * 有新的好友申请
+	 */
+	if (extra === structor.has_new_apply) {
+		uni.showTabBarRedDot({
+			index: 1
+		});
+		await setApplyStatus({ flag: true });
+		return;
+	}
+	/**
+	 * 有新的聊天室被创建
+	 */
+	if (extra === structor.has_new_room) {
+		console.log('---新的聊天室被创建---');
+		console.log(data);
 		return;
 	}
 	/**

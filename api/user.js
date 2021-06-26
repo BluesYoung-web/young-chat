@@ -19,12 +19,32 @@ const getFriendsList = async (params) => {
 };
 
 const getThisUserInfo = async (params) => {
-	await baseSend(structor.get_this_user_info);
+	await baseSend(structor.get_this_user_info, params);
+};
+
+const sendFriendApply = async (params) => {
+	await baseSend(structor.send_friend_apply, params);
+};
+
+const getFriendApplyList = async (params) => {
+	await baseSend(structor.get_friend_apply_list, params);
+};
+
+const operateFriendApply = async (params) => {
+	await baseSend(structor.operate_friend_apply, params);
+};
+
+const delFriend = async (params) => {
+	await baseSend(structor.del_friend, params);
 };
 
 export {
 	editInfo,
 	search,
 	getFriendsList,
-	getThisUserInfo
+	getThisUserInfo,
+	sendFriendApply,
+	getFriendApplyList,
+	operateFriendApply,
+	delFriend
 };

@@ -41,14 +41,6 @@ export default {
 			
 		}
 	},
-	async onPullDownRefresh() {
-		console.log('下拉了');
-		await sleep(3);
-		uni.stopPullDownRefresh();
-	},
-	onTabItemTap() {
-		uni.startPullDownRefresh();
-	},
 	methods: {
 		
 	}

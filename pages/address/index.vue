@@ -22,13 +22,15 @@
 				</u-cell-item>
 				<u-cell-item icon="chat-fill" :icon-style="{ color: '#007aff' }" title="我的群聊" :arrow="false" @click="goRoom">
 					<span slot="right-icon">
-						<u-badge v-show="hasNewApply" :is-dot="true" />
 						<u-icon name="arrow-right" />
 					</span>
 				</u-cell-item>
 			</u-cell-group>
-			<div>
+			<div v-if="friend_list.length > 0">
 				<user-item :user_list="friend_list" />
+			</div>
+			<div v-else class="mt-10">
+				<u-empty mode="list" text="暂无好友,快去添加好友吧" />
 			</div>
 		</div>
 	</view>

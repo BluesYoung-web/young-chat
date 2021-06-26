@@ -6,8 +6,7 @@
 		{
 			"path": "pages/message/index",
 			"style": {
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": true
+				"navigationStyle": "custom"
 			}
 		}, {
 			"path": "pages/address/index",
@@ -61,6 +60,11 @@
 			}
 		}, {
 			"path": "pages/find/subPage/commnet",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/address/subPage/apply",
 			"style": {
 				"navigationStyle": "custom"
 			}

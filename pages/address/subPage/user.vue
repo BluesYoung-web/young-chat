@@ -30,13 +30,30 @@
 			</div>
 			<div class="w-full mt-20 px-5">
 				<div v-if="!temp_info.is_friend" class="add">
-					<u-button plain @click="sendAdd"><u-icon name="man-add" class="mr-1" />加好友</u-button>
+					<u-button plain @click="showPopup=true"><u-icon name="man-add" class="mr-1" />加好友</u-button>
 				</div>
 				<div v-else class="flex justify-around">
 					<u-button class="w-2/5" type="success" @click="sendMsg(0)">发语音</u-button>
 					<u-button class="w-2/5" type="warning" @click="sendMsg(1)">发消息</u-button>
 				</div>
 			</div>
+			<!-- 好友申请弹出层 -->
+			<u-popup
+				v-model="showPopup"
+				mode="center"
+				width="80%"
+				height="38%"
+				border-radius="16"
+				:closeable="true"
+				:mask-close-able="false"
+			>
+				<view class="w-full h-full flex justify-center items-end">
+					<div class="w-full px-3">
+						<u-input v-model="content" class="px-2 mt-3" border :auto-height="false" type="textarea" placeholder="说点什么吧(请勿输入emoji!!!)" />
+						<u-button type="success" class="my-3" plain @click="sendAdd">发送好友申请</u-button>
+					</div>
+				</view>
+			</u-popup>
 		</view>
 	</view>
 </template>
