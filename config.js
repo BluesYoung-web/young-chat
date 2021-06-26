@@ -22,6 +22,9 @@ const structor = {
 	get_circle: '300-0-1',
 	del_circle: '300-0-2',
 	click_like: '300-0-3',
+	get_comments: '300-0-4',
+	put_comments: '300-0-5',
+	del_comments: '300-0-6',
 	
 	has_new_circle: '300-1-0',
 	

@@ -43,7 +43,7 @@
 									<u-icon v-else name="heart-fill" size="34" color="red" />
 									<span class="ml-1">{{ item.likes_num }}</span>
 								</p>
-								<p>
+								<p @click="goComments(item)">
 									<u-icon name="chat" size="34" />
 									<span class="ml-1">{{ item.comments_num }}</span>
 								</p>

@@ -16,9 +16,24 @@ const clickLike = async (params) => {
 	await baseSend(structor.click_like, params);
 };
 
+const getComments = async (params) => {
+	await baseSend(structor.get_comments, params);
+};
+
+const putComments = async (params) => {
+	await baseSend(structor.put_comments, params);
+};
+
+const delComments = async (params) => {
+	await baseSend(structor.del_comments, params);
+};
+
 export {
 	sendCircle,
 	getCircle,
 	delCircle,
-	clickLike
+	clickLike,
+	getComments,
+	putComments,
+	delComments
 }
