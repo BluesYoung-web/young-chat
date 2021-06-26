@@ -16,13 +16,16 @@ export default {
 				loading: '努力加载中',
 				nomore: '我是有底线的'
 			},
-			query: { page: 1, limit: 10 }
+			query: { page: 1, limit: 10, is_my: false, is_like: false, is_comment: false }
 		}
 	},
-	async mounted() {
+	async onShow() {
 		await getCircle(this.query);
 	},
-	onLoad() {
+	onLoad({ is_my, is_like, is_comment }) {
+		this.query.is_my = is_my;
+		this.query.is_like = is_like;
+		this.query.is_comment = is_comment;
 		/**
 		 * 图片上传成功
 		 */
@@ -50,10 +53,15 @@ export default {
 		event.off(structor.get_circle, '*');
 	},
 	methods: {
+		async goComments(item) {
+			uni.navigateTo({
+				url: `/pages/find/subPage/commnet?autoid=${item.autoid}&owner_id=${item.user_id}`
+			});
+		},
 		async getList() {
 			this.load_status = 'loading';
 			this.query.page++;
-			await await getCircle(this.query);
+			await getCircle(this.query);
 		},
 		async clear() {
 			this.showPopup = false;
@@ -63,7 +71,7 @@ export default {
 			
 			this.circle_list = [];
 			this.query.page = 1;
-			await this.sleep(0.8);
+			await this.sleep(0.5);
 			await getCircle(this.query);
 		},
 		chooseImg() {

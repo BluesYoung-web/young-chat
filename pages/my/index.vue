@@ -31,15 +31,15 @@
 				<u-button @tap="edit">编辑资料</u-button>
 			</div>
 			<div class="w-full h-full px-20 flex justify-between text-white">
-				<p class="flex flex-col text-center">
+				<p class="flex flex-col text-center" @click="goCircle('?is_my=true')">
 					<span>发表</span>
 					<span>{{ user_info.send || 0 }}</span>
 				</p>
-				<p class="flex flex-col text-center">
+				<p class="flex flex-col text-center" @click="goCircle('?is_like=true')">
 					<span>点赞</span>
 					<span>{{ user_info.like || 0 }}</span>
 				</p>
-				<p class="flex flex-col text-center">
+				<p class="flex flex-col text-center" @click="goCircle('?is_comment=true')">
 					<span>评论</span>
 					<span>{{ user_info.comment || 0 }}</span>
 				</p>
@@ -68,6 +68,11 @@ export default {
 		goSetting() {
 			uni.navigateTo({
 				url: './subPage/setting'
+			});
+		},
+		goCircle(e) {
+			uni.navigateTo({
+				url: '/pages/find/subPage/circle' + e
 			});
 		},
 		edit() {
