@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<u-navbar
-			title="聊天室"
+			:title="title"
 			:background="background_conf"
 			:title-color="title_color"
 			back-icon-name="arrow-left"
@@ -12,6 +12,11 @@
 				<u-icon name="more-dot-fill" :color="title_color" size="36" style="margin-right: 10px;" @click="showMenu=true" />
 			</div>
 		</u-navbar>
+		<div class="record w-full">
+			<scroll-view scroll-y="true" class="w-full h-full">
+				<chat-record :msg-list="msg_list" />
+			</scroll-view>
+		</div>
 		<div class="key-bord" :style="{ bottom: bottom + 'upx' }">
 			<key-board
 				:is-voice="isVoice"
@@ -34,9 +39,10 @@ import useRoom from '../mixins/useRoom.js';
 import KeyBoard from '@/components/key-board/index.vue';
 import Emoji from '@/components/emoji/index.vue';
 import ExtMenu from '@/components/ext-menu/index.vue';
+import ChatRecord from '@/components/chat-record/index.vue';
 export default {
 	name: 'ChatRoom',
-	components: { KeyBoard, Emoji, ExtMenu },
+	components: { KeyBoard, Emoji, ExtMenu, ChatRecord },
 	mixins: [useRoom],
 	data() {
 		return {
@@ -53,5 +59,10 @@ export default {
 	background-color: $young-bg-bot;
 	padding-top: 10upx;
 	padding-bottom: 20upx;
+}
+.record {
+	height: calc(100vh - 180upx);
+	margin-top: 80upx;
+	margin-bottom: 100upx;
 }
 </style>

@@ -48,6 +48,9 @@ export default {
 			const show_time = moment.duration(moment(time).diff(moment.now())).humanize(true);
 			return show_time || '日期不合法';
 		},
+		useTimeFormat(timestamp) {
+			return moment(timestamp).format('lll') || '时间不合法';
+		},
 		hasPermission(uid) {
 			return this.user_info.uid === uid;
 		}

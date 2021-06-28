@@ -5,15 +5,19 @@
  * @Description: 
  */
 import net from '@/core/net.js';
+import { getMessages } from '@/store/room.js';
+import { sendMsg } from '@/api/room.js';
 export default {
 	data() {
 		return {
+			room_id: 0,
 			title: '聊天室',
 			plusMenu: [
 				{ op: 'chooseImg', src: '/static/img/conversation/album.png' },
 				{ op: 'takePhoto', src: '/static/img/conversation/photo.png' },
 				{ op: 'chooseMusic', src: '/static/img/conversation/music.png' }
 			],
+			msg_list: [],
 			isVoice: false,
 			showEmoji: false,
 			showPlus: false,
@@ -21,12 +25,17 @@ export default {
 			bottom: 0
 		}
 	},
-	onLoad(params) {
-		const room_id = params.room_id;
+	async onLoad({ room_id, title }) {
 		if (room_id) {
+			this.room_id = room_id;
+			this.title = title;
 			this.getRoomDetail(room_id);
 		} else {
 			this.$u.toast('非法进入');
+			await this.sleep(0.8);
+			uni.reLaunch({
+				url: '/pages/message/index'
+			});
 		}
 	},
 	methods: {
@@ -35,9 +44,8 @@ export default {
 				url: '/pages/message/index'
 			});
 		},
-		getRoomDetail(room_id) {
-			console.log(room_id);
-			console.log('欢迎光临');
+		async getRoomDetail(room_id) {
+			this.msg_list = await getMessages(room_id);
 		},
 		/**
 		 * 点击输入框/空白处隐藏表情键盘
@@ -121,9 +129,11 @@ export default {
 			}
 			uni.chooseImage(config);
 		},
-		sendText() {
-			console.log('发送文本');
-			console.log(this.inputMsg);
+		async sendText() {
+			const params = { autoid: this.room_id, msg_type: 1, content: this.inputMsg };
+			await sendMsg(params);
+			await this.sleep(0.5);
+			this.inputMsg = '';
 		},
 		sendImg() {
 			console.log('发送图片');

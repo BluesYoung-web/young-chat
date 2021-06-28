@@ -14,7 +14,6 @@ export default {
 				const { from = [], to = [] } = data;
 				this.i_send = from;
 				this.to_me = to;
-				console.log(data)
 			}
 		});
 	},

@@ -9,7 +9,7 @@
 			:back-icon-size="34"
 		/>
 		<view class="content p-2">
-			<u-section title="待处理的申请" :right="false" font-size="32" color="#555" />
+			<u-section title="我收到的申请" :right="false" font-size="32" color="#555" />
 			<div
 				class="bg-blue-100 flex items-center p-1 w-full justify-around rounded shadow mt-3"
 				v-for="(item, index) in to_me"

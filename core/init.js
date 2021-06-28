@@ -5,6 +5,7 @@
  * @Description: 系统初始化
  */
 import { getLoginInfo, setUserInfo, getUserInfo } from '@/store/login.js';
+import { addNewMsgToRoom } from '@/store/room.js';
 import { setCircleStatus, setApplyStatus } from '@/store/status.js';
 import net, { event } from '@/core/net.js';
 import { structor } from '@/config.js';
@@ -38,14 +39,6 @@ event.on(structor.success, async ({ cbk, data, extra }) => {
 			index: 1
 		});
 		await setApplyStatus({ flag: true });
-		return;
-	}
-	/**
-	 * 有新的聊天室被创建
-	 */
-	if (extra === structor.has_new_room) {
-		console.log('---新的聊天室被创建---');
-		console.log(data);
 		return;
 	}
 	/**
@@ -108,6 +101,17 @@ event.on(structor.fail, async ({ cbk, data, extra }) => {
 	}
 });
 
+/**
+ * 聊天室消息
+ */
+event.on(structor.room_msg, async ({ cbk, data, extra }) => {
+	if (cbk === structor.room_msg) {
+		console.log('---收到聊天室的消息---');
+		console.log(data);
+		console.log('---消息结束---');
+		addNewMsgToRoom(data);
+	}
+});
 export default async () => {
   const { sign, uid } = await getLoginInfo() || {};
   net.init(sign, uid);

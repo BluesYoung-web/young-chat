@@ -1,3 +1,4 @@
+import { getRoomList } from '@/store/room.js';
 export default {
 	data() {
 		return {
@@ -7,79 +8,11 @@ export default {
 				{ text: '帮助与反馈' }
 			],
 			showMenu: false,
-			chatRooms: [
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512931',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512932',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512933',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512934',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512935',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512936',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512937',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512938',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '2512939',
-					show: false
-				},
-				{
-					img: '/static/img/tips/出价成功图标.png',
-					title: '房间名称',
-					msg: '当前收到的消息',
-					room_id: '25129310',
-					show: false
-				}
-			]
+			chatRooms: []
 		}
+	},
+	async onShow() {
+		this.chatRooms = await getRoomList();
 	},
 	methods: {
 		clickMenu(index) {
@@ -115,9 +48,9 @@ export default {
 					break;
 			}
 		},
-		clickInto(room_id) {
+		clickInto(item) {
 			uni.navigateTo({
-				url: `/pages/message/subPage/chatRoom?room_id=${room_id}`
+				url: `/pages/message/subPage/chatRoom?room_id=${item.room_id}&title=${item.title}`
 			});
 		}
 	}

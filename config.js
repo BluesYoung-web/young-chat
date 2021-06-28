@@ -21,9 +21,10 @@ const structor = {
 	get_friend_apply_list: '200-0-5',
 	operate_friend_apply: '200-0-6',
 	del_friend: '200-0-7',
+	send_msg_in_room: '200-0-8',
 	
 	has_new_apply: '200-1-0',
-	has_new_room: '200-1-1',
+	room_msg: '200-1-1',
 	
 	send_circle: '300-0-0',
 	get_circle: '300-0-1',
