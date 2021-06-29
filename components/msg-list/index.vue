@@ -12,6 +12,7 @@
 		>
 			<view class="item u-border-bottom">
 				<image mode="aspectFill" :src="getImgUrl(item.img)" />
+				<u-badge :count="item.msg_num" :offset="[100, 20]" />
 				<div class="flex w-full flex-col justify-around">
 					<div class="flex justify-between items-center">
 						<text class="text-gray-900">{{ item.title }}</text>

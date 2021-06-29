@@ -22,14 +22,19 @@ export default {
 			showEmoji: false,
 			showPlus: false,
 			inputMsg: '',
-			bottom: 0
+			bottom: 0,
+			scrollTop: 0
 		}
 	},
-	async onLoad({ room_id, title }) {
+	async onLoad({ room_id, title, is_voice = false }) {
 		if (room_id) {
 			this.room_id = room_id;
 			this.title = title;
-			this.getRoomDetail(room_id);
+			this.isVoice = is_voice === 'true';
+			await this.getRoomDetail();
+			this.scrollBottom();
+			// 监听新消息
+			uni.$on(`new_message_${room_id}`, this.scrollBottom);
 		} else {
 			this.$u.toast('非法进入');
 			await this.sleep(0.8);
@@ -38,14 +43,27 @@ export default {
 			});
 		}
 	},
+	onUnload() {
+		uni.$off(`new_message_${this.room_id}`);
+	},
 	methods: {
+		/**
+		 * 滚动到消息底部
+		 */
+		scrollBottom() {
+			console.log('滚动');
+			this.$nextTick(() => {
+				this.scrollTop = this.msg_list.length * 100;
+			});
+		},
 		goBack() {
+			uni.$emit(`clear_msg_num`, this.room_id);
 			uni.switchTab({
 				url: '/pages/message/index'
 			});
 		},
-		async getRoomDetail(room_id) {
-			this.msg_list = await getMessages(room_id);
+		async getRoomDetail() {
+			this.msg_list = await getMessages(this.room_id);
 		},
 		/**
 		 * 点击输入框/空白处隐藏表情键盘
@@ -132,14 +150,21 @@ export default {
 		async sendText() {
 			const params = { autoid: this.room_id, msg_type: 1, content: this.inputMsg };
 			await sendMsg(params);
-			await this.sleep(0.5);
-			this.inputMsg = '';
+			await this.sleep(0.2);
+			await this.getRoomDetail();
+			this.clear();
 		},
 		sendImg() {
 			console.log('发送图片');
 		},
 		sendVoice() {
 			console.log('发送语音');
+		},
+		clear() {
+			this.inputMsg = '';
+			this.showEmoji = false;
+			this.showPlus = false;
+			this.bottom = 0;
 		}
 	}
 }

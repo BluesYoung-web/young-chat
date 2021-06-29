@@ -109,7 +109,8 @@ event.on(structor.room_msg, async ({ cbk, data, extra }) => {
 		console.log('---收到聊天室的消息---');
 		console.log(data);
 		console.log('---消息结束---');
-		addNewMsgToRoom(data);
+		await addNewMsgToRoom(data);
+		uni.$emit(`new_message_${data.autoid}`);
 	}
 });
 export default async () => {

@@ -7,13 +7,20 @@
 			back-icon-name="arrow-left"
 			:back-icon-color="title_color"
 			:back-icon-size="34"
+			:custom-back="goBack"
 		>
 			<div slot="right">
 				<u-icon name="more-dot-fill" :color="title_color" size="36" style="margin-right: 10px;" @click="showMenu=true" />
 			</div>
 		</u-navbar>
 		<div class="record w-full">
-			<scroll-view scroll-y="true" class="w-full h-full">
+			<scroll-view
+				scroll-y="true"
+				class="w-full h-full"
+				:scroll-with-animation="true"
+				:scroll-top="scrollTop"
+				id="sc"
+			>
 				<chat-record :msg-list="msg_list" />
 			</scroll-view>
 		</div>

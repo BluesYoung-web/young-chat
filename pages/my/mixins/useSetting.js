@@ -1,4 +1,4 @@
-import { sleep } from '@/util/sleep.js';
+import { clearRecord } from '@/store/room.js';
 export default {
 	data() {
 		return {}
@@ -16,10 +16,11 @@ export default {
 		},
 		rmAllChat() {
 			uni.showModal({
-				content: '确认清空聊天记录？',
+				title: '确认清空聊天记录？',
+				content: '清空聊天记录之后将无法恢复',
 				success: async ({ confirm }) => {
 					if (confirm) {
-						this.$u.toast('敬请期待！');
+						await clearRecord();
 					}
 				}
 			});
@@ -41,7 +42,7 @@ export default {
 					if (confirm) {
 						await this.$api.loginOut();
 						this.$u.toast('已退出登录');
-						await sleep(0.8);
+						await this.sleep(0.8);
 						uni.reLaunch({
 							url: '/pages/login/index'
 						});

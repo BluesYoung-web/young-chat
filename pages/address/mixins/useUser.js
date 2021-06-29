@@ -1,5 +1,9 @@
 import { getUserInfo } from '@/store/login.js';
 import { sendFriendApply, delFriend } from '@/api/user.js';
+import { createRoom } from '@/api/room.js';
+import { event } from '@/core/net.js';
+import { structor } from '@/config.js';
+import { createRoom as cr, updateRoom as ur } from '@/store/room.js';
 export default {
 	data() {
 		return {
@@ -10,7 +14,8 @@ export default {
 				motto: ''
 			},
 			showPopup: false,
-			content: ''
+			content: '',
+			isVoice: false
 		}
 	},
 	async onLoad({ uid }) {
@@ -23,6 +28,25 @@ export default {
 			return;
 		}
 		this.temp_info = await getUserInfo(uid);
+		
+		event.on(structor.create_room, async ({ cbk, data, extra }) => {
+			if (cbk === structor.create_room) {
+				const room = cr({
+					autoid: data.autoid,
+					name: this.temp_info.nick,
+					cover: this.temp_info.avatar,
+					content: '[草稿]',
+					send_time: Date.now()
+				});
+				await ur(room, this.user_info.uid);
+				uni.navigateTo({
+					url: `/pages/message/subPage/chatRoom?room_id=${data.autoid}&title=${this.temp_info.nick}&is_voice=${this.isVoice}`
+				});
+			}
+		});
+	},
+	onUnload() {
+		event.off(structor.create_room, '*');
 	},
 	methods: {
 		del() {
@@ -40,8 +64,13 @@ export default {
 				}
 			});
 		},
-		sendMsg(type) {
-			this.$u.toast('发送消息' + type);
+		async sendMsg(type) {
+			if (type === 0) {
+				this.isVoice = true;
+			} else {
+				this.isVoice = false;
+			}
+			await createRoom({ uids: [this.temp_info.uid] });
 		},
 		async sendAdd() {
 			await sendFriendApply({ to: this.temp_info.uid, msg: this.content });
