@@ -7,6 +7,7 @@
 				:key="index"
 				@click="goUserInfo(item)"
 			>
+				<u-checkbox v-if="is_check" :value="item.select" shape="circle" />
 				<image mode="aspectFill" :src="getImgUrl(item.avatar)" />
 				<!-- 此层wrap在此为必写的，否则可能会出现标题定位错误 -->
 				<view class="title-wrap">
@@ -29,6 +30,7 @@ export default {
 	props: {
 		user_list: { type: Array, default: () => [] },
 		hide_status: { type: Boolean, default: false },
+		is_check: { type: Boolean, default: false }
 	},
 	data() {
 		return {
@@ -41,6 +43,10 @@ export default {
 	},
 	methods: {
 		async goUserInfo(e) {
+			if (this.is_check) {
+				e.select = !e.select;
+				return;
+			}
 			const { uid } = e;
 			if (uid === this.uid) {
 				uni.reLaunch({

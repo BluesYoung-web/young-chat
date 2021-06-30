@@ -23,6 +23,7 @@ const structor = {
 	del_friend: '200-0-7',
 	send_msg_in_room: '200-0-8',
 	create_room: '200-0-9',
+	get_room_list: '200-0-10',
 	
 	has_new_apply: '200-1-0',
 	room_msg: '200-1-1',

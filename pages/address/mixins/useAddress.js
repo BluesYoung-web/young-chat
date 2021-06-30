@@ -51,7 +51,9 @@ export default {
 			});
 		},
 		goRoom() {
-			this.$u.toast('群列表')
+			uni.navigateTo({
+				url: '/pages/address/subPage/myRoom'
+			});
 		}
 	}
 }

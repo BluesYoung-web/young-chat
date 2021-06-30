@@ -54,7 +54,9 @@ export default {
 		clickMenu(index) {
 			switch (index){
 				case 0:
-					this.$u.toast('发起群聊');
+					uni.navigateTo({
+						url: '/pages/address/subPage/createRoom'
+					});
 					break;
 				case 1:
 					uni.navigateTo({

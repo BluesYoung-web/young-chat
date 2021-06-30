@@ -68,6 +68,16 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/address/subPage/createRoom",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/address/subPage/myRoom",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"tabBar": {

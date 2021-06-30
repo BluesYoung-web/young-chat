@@ -22,9 +22,6 @@ export default {
 				url: '/pages/find/subPage/circle'
 			});
 		},
-		goBBBUG() {
-			this.$u.toast('敬请期待')
-		},
 		goIOT() {
 			this.$u.toast('敬请期待')
 		}

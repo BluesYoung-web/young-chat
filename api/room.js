@@ -9,7 +9,12 @@ const createRoom = async (params) => {
 	await baseSend(structor.create_room, params);
 };
 
+const getRoomList = async (params) => {
+	await baseSend(structor.get_room_list, params);
+};
+
 export {
 	sendMsg,
-	createRoom
+	createRoom,
+	getRoomList
 };

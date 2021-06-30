@@ -19,11 +19,6 @@
 						<u-icon name="arrow-right" />
 					</span>
 				</u-cell-item>
-				<u-cell-item icon="server-fill" :icon-style="{ color: '#007aff' }" title="BBBUG 点歌聊天室" :arrow="false" @click="goBBBUG">
-					<span slot="right-icon">
-						<u-icon name="arrow-right" />
-					</span>
-				</u-cell-item>
 				<u-cell-item icon="home" :icon-style="{ color: '#f29100' }" title="我的智能家居" :arrow="false" @click="goIOT">
 					<span slot="right-icon">
 						<u-icon name="arrow-right" />

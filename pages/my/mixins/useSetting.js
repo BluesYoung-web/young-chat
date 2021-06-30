@@ -21,6 +21,7 @@ export default {
 				success: async ({ confirm }) => {
 					if (confirm) {
 						await clearRecord();
+						this.$u.toast('删除成功！');
 					}
 				}
 			});

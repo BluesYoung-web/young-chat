@@ -27,13 +27,13 @@ const addRoom = async (room) => {
 const delRoom = async (room) => {
 	const { uid } = await getLoginInfo() || {};
 	const roomList = await getRoomList();
-	const index = roomList.findIndex((item) => item.autoid === room.autoid);
+	const index = roomList.findIndex((item) => +item.room_id === +room.room_id);
 	roomList.splice(index, 1);
 	return await state.set(`room_list_${uid}`, roomList);
 };
 const updateRoom = async (room, uid) => {
 	const roomList = await getRoomList();
-	const index = roomList.findIndex((item) => item.autoid === room.autoid);
+	const index = roomList.findIndex((item) => +item.room_id === +room.room_id);
 	if (index === -1) {
 		return await addRoom(room);
 	} else {
@@ -60,7 +60,7 @@ const addNewMsgToList = async ({ autoid, owner, msg_type, content, send_id, send
 		room = createRoom({ autoid, name: nick, cover: avatar, content, send_time });
 	} else {
 		// 群聊
-		const { name, avatar } = extra;
+		const { name, cover = '/static/img/my/default.png' } = extra;
 		room = createRoom({ autoid, name, cover, content, send_time });
 	}
 	room.msg_num++;
