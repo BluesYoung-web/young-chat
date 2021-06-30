@@ -49,7 +49,7 @@ const updateRoom = async (room, uid) => {
 
 const addNewMsgToList = async ({ autoid, owner, msg_type, content, send_id, send_time, extra }) => {
 	const { uid } = await getLoginInfo() || {};
-	const MsgType = ['[系统消息]', '文本消息', '[语音]', '[图片]', '[其他]'];
+	const MsgType = ['[系统消息]', '文本消息', '[图片]', '[语音]', '[其他]'];
 	let room;
 	if (owner === 0) {
 		// 私聊

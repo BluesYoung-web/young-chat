@@ -91,13 +91,13 @@ export default {
 		 * 长按开始录音，取消录音提示框出现
 		 */
 		startRecord() {
-			//// #ifdef H5
-			// uni.showToast({
-			// 	icon: 'none',
-			// 	title: '浏览器暂不支持发送语音'
-			// });
-			//// #endif
-			//// #ifdef APP-PLUS
+			// #ifdef H5
+			uni.showToast({
+				icon: 'none',
+				title: '浏览器暂不支持发送语音'
+			});
+			// #endif
+			// #ifdef APP-PLUS
 			this.timer = setInterval(() => {
 				this.intervalTime += 0.5;
 				if (this.intervalTime >= 0.5 && !this.pressActive) {
@@ -110,7 +110,7 @@ export default {
 					});
 				}
 			}, 500);
-			//// #endif
+			// #endif
 		},
 		/**
 		 * 可能要取消发送语音

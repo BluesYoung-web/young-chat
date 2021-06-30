@@ -29,7 +29,7 @@
 				:is-voice="isVoice"
 				:content="inputMsg"
 				@input-change="inputChange"
-				@input-focus="takeBack"
+				@input-focus="clear"
 				@input="getContent"
 				@show-emoji="showEmojiBoard"
 				@send="sendText"

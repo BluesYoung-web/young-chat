@@ -17,6 +17,18 @@ const uploadImg = async ({ fileName, blob }) => {
 	});
 };
 
+const uploadAudio = async ({ fileName, blob }) => {
+	const [com, task] = structor.upload_audio.split('-').map((item) => +item);
+	await net.upload({
+		msg: {
+			data: {	com, task },
+			extra: { fileName }
+		},
+		blob
+	});
+};
+
 export {
-	uploadImg
+	uploadImg,
+	uploadAudio
 };
