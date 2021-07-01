@@ -2,7 +2,7 @@ import Cache from '@/lib/Cache.js';
 import { getLoginInfo } from './login.js';
 const state = new Cache('chat', 'room');
 
-const createRoom = ({ autoid, name, cover, content, send_time }) => {
+const createRoom = ({ autoid, name, cover, content, send_time, owner = 0 }) => {
 	return {
 		img: cover,
 		title: name,
@@ -10,7 +10,8 @@ const createRoom = ({ autoid, name, cover, content, send_time }) => {
 		room_id: autoid,
 		show: false,
 		show_time: send_time,
-		msg_num: 0
+		msg_num: 0,
+		owner
 	};
 }
 

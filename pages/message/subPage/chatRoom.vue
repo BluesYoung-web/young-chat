@@ -9,8 +9,8 @@
 			:back-icon-size="34"
 			:custom-back="goBack"
 		>
-			<div slot="right">
-				<u-icon name="more-dot-fill" :color="title_color" size="36" style="margin-right: 10px;" @click="showMenu=true" />
+			<div v-if="+owner !== 0" slot="right">
+				<u-icon name="more-dot-fill" :color="title_color" size="36" style="margin-right: 10px;" @click="goDetail" />
 			</div>
 		</u-navbar>
 		<div class="record w-full">

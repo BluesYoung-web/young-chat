@@ -53,7 +53,7 @@ export default {
 			const r = await createRoom({ ...room, content: '[草稿]', send_time: Date.now() });
 			await updateRoom(r);
 			uni.navigateTo({
-				url: `/pages/message/subPage/chatRoom?room_id=${room.autoid}&title=${room.name}`
+				url: `/pages/message/subPage/chatRoom?room_id=${room.autoid}&title=${room.name}&owner=${room.owner}`
 			});
 		}
 	}

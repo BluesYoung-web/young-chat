@@ -13,8 +13,18 @@ const getRoomList = async (params) => {
 	await baseSend(structor.get_room_list, params);
 };
 
+const getRoomDetail = async (params) => {
+	await baseSend(structor.get_room_detail, params);
+};
+
+const modRoomInfo = async (params) => {
+	await baseSend(structor.mod_room_info, params);
+};
+
 export {
 	sendMsg,
 	createRoom,
-	getRoomList
+	getRoomList,
+	getRoomDetail,
+	modRoomInfo
 };

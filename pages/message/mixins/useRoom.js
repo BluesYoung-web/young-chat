@@ -13,6 +13,7 @@ export default {
 	data() {
 		return {
 			room_id: 0,
+			owner: 0,
 			title: '聊天室',
 			plusMenu: [
 				{ op: 'chooseImg', src: '/static/img/conversation/album.png' },
@@ -31,9 +32,10 @@ export default {
 			blob: null
 		}
 	},
-	async onLoad({ room_id, title, is_voice = false }) {
+	async onLoad({ room_id, title, is_voice = false, owner = 0 }) {
 		if (room_id) {
 			this.room_id = room_id;
+			this.owner = owner;
 			this.title = title;
 			this.isVoice = is_voice === 'true';
 			await this.getRoomDetail();
@@ -180,6 +182,11 @@ export default {
 			this.showEmoji = false;
 			this.showPlus = false;
 			this.bottom = 0;
+		},
+		goDetail() {
+			uni.navigateTo({
+				url: `/pages/message/subPage/roomDetail?room_id=${this.room_id}`
+			});
 		}
 	}
 }

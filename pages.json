@@ -78,6 +78,11 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/message/subPage/roomDetail",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"tabBar": {

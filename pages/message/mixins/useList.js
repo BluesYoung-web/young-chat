@@ -93,7 +93,7 @@ export default {
 			item.show = false;
 			await updateRoom(item, this.user_info.uid);
 			uni.navigateTo({
-				url: `/pages/message/subPage/chatRoom?room_id=${item.room_id}&title=${item.title}`
+				url: `/pages/message/subPage/chatRoom?room_id=${item.room_id}&title=${item.title}&owner=${item.owner || 0}`
 			});
 		}
 	}
