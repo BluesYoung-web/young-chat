@@ -21,10 +21,15 @@ const modRoomInfo = async (params) => {
 	await baseSend(structor.mod_room_info, params);
 };
 
+const quitRoom = async (params) => {
+	await baseSend(structor.quit_room, params);
+};
+
 export {
 	sendMsg,
 	createRoom,
 	getRoomList,
 	getRoomDetail,
-	modRoomInfo
+	modRoomInfo,
+	quitRoom
 };

@@ -26,6 +26,7 @@ const structor = {
 	get_room_list: '200-0-10',
 	get_room_detail: '200-0-11',
 	mod_room_info: '200-0-12',
+	quit_room: '200-0-13',
 	
 	has_new_apply: '200-1-0',
 	room_msg: '200-1-1',

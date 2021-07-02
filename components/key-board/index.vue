@@ -91,6 +91,11 @@ export default {
 		 * 长按开始录音，取消录音提示框出现
 		 */
 		startRecord() {
+			uni.showToast({
+				icon: 'none',
+				title: '尽请期待'
+			});
+			return;
 			// #ifdef H5
 			uni.showToast({
 				icon: 'none',

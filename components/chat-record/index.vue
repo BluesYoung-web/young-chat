@@ -11,6 +11,9 @@
 			<!-- 文本消息 -->
 			<div v-if="item.msg_type === 1">
 				<!-- 当前用户发的靠右，其余的靠左 -->
+				<div class="flex" :class="isMe(+item.send_id) ? 'flex-row-reverse justify-start mr-2' : 'ml-2'">
+					<text class="text-xs text-gray-500">{{ item.send_nick }}</text>
+				</div>
 				<div class="flex" :class="isMe(+item.send_id) ? 'flex-row-reverse justify-start mr-1' : 'ml-1'">
 					<u-image :src="getImgUrl(item.send_avatar)" width="72" height="72" shape="circle" />
 					<span class="msg rounded p-2 shadow" :class="isMe(+item.send_id) ? 'bg-blue-100 mr-2 triangle-me' : 'bg-green-100 ml-2 triangle-other' ">{{ item.content }}</span>
@@ -18,6 +21,9 @@
 			</div>
 			<!-- 图片消息 -->
 			<div v-if="item.msg_type === 2">
+				<div class="flex" :class="isMe(+item.send_id) ? 'flex-row-reverse justify-start mr-2' : 'ml-2'">
+					<text class="text-xs text-gray-500">{{ item.send_nick }}</text>
+				</div>
 				<!-- 当前用户发的靠右，其余的靠左 -->
 				<div class="flex" :class="isMe(+item.send_id) ? 'flex-row-reverse justify-start mr-1' : 'ml-1'">
 					<u-image :src="getImgUrl(item.send_avatar)" width="72" height="72" shape="circle" />
@@ -28,6 +34,9 @@
 			</div>
 			<!-- 语音/音频 消息 -->
 			<div v-if="item.msg_type === 3">
+				<div class="flex" :class="isMe(+item.send_id) ? 'flex-row-reverse justify-start mr-2' : 'ml-2'">
+					<text class="text-xs text-gray-500">{{ item.send_nick }}</text>
+				</div>
 				<!-- 当前用户发的靠右，其余的靠左 -->
 				<div class="flex" :class="isMe(+item.send_id) ? 'flex-row-reverse justify-start mr-1' : 'ml-1'">
 					<u-image :src="getImgUrl(item.send_avatar)" width="72" height="72" shape="circle" />
@@ -38,6 +47,9 @@
 			</div>
 			<!-- 其他消息，暂无 -->
 			<div v-if="item.msg_type === 4">
+				<div class="flex" :class="isMe(+item.send_id) ? 'flex-row-reverse justify-start mr-2' : 'ml-2'">
+					<text class="text-xs text-gray-500">{{ item.send_nick }}</text>
+				</div>
 				<!-- 当前用户发的靠右，其余的靠左 -->
 				<div class="flex" :class="isMe(+item.send_id) ? 'flex-row-reverse justify-start mr-1' : 'ml-1'">
 					<u-image :src="getImgUrl(item.send_avatar)" width="72" height="72" shape="circle" />

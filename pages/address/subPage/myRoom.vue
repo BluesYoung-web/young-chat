@@ -8,7 +8,7 @@
 			:back-icon-color="title_color"
 			:back-icon-size="34"
 		/>
-		<scroll-view scroll-y="true">
+		<scroll-view v-if="room_list.length > 0" scroll-y="true">
 			<div class="w-full h-full">
 				<div
 					v-for="(item, index) in room_list"
@@ -19,8 +19,12 @@
 					<u-image class="shadow" :src="getImgUrl(item.cover)" width="100" height="100" shape="circle" />
 					<span class="ml-2 text-gray-700">{{ item.name }}</span>
 				</div>
+				
 			</div>
 		</scroll-view>
+		<div v-else class="w-full h-full">
+			<u-empty mode="data" text="快去建群聊天吧" />
+		</div>
 	</view>
 </template>
 

@@ -62,7 +62,7 @@ const addNewMsgToList = async ({ autoid, owner, msg_type, content, send_id, send
 	} else {
 		// 群聊
 		const { name, cover = '/static/img/my/default.png' } = extra;
-		room = createRoom({ autoid, name, cover, content, send_time });
+		room = createRoom({ autoid, name, cover, content, send_time, owner });
 	}
 	room.msg_num++;
 	return await updateRoom(room, uid);

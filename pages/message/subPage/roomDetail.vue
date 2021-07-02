@@ -8,9 +8,9 @@
 			:back-icon-color="title_color"
 			:back-icon-size="34"
 		/>
-		<div class="w-full flex justify-center bg-gray-100">
+		<div class="w-full flex justify-center bg-gray-300">
 			<u-image
-				class="my-5"
+				class="my-5 shadow"
 				:src="getImgUrl(room_info.cover)"
 				width="180"
 				height="180"
@@ -18,8 +18,8 @@
 				@click="changeAvatar"
 			/>
 		</div>
-		<div class="w-full flex justify-start items-start bg-gray-100">
-			<div class="flex m-1" v-for="(item, index) in room_info.users" :key="index + 'sdsaase'">
+		<div class="w-full flex justify-start items-start bg-gray-300 pb-2">
+			<div class="flex m-1 shadow rounded-full" v-for="(item, index) in room_info.users" :key="index + 'sdsaase'">
 				<u-image :src="getImgUrl(item.metadata.avatar)" width="65" height="65" shape="circle" />
 			</div>
 		</div>
@@ -28,6 +28,10 @@
 				<span slot="right-icon">{{ room_info.name }}</span>
 			</u-cell-item>
 		</u-cell-group>
+		<div class="w-full p-2 mt-3 fixed bottom-0">
+			<u-button type="error" plain @click="clearRecord">删除聊天记录</u-button>
+			<u-button class="mt-2" type="error" @click="quitRoom">退出群聊</u-button>
+		</div>
 		<!-- 修改群名 -->
 		<u-modal
 			v-model="edit_name"
